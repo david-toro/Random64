@@ -17,13 +17,13 @@ public:
     Random64();
     ~Random64();
 private:
-	bool checkHullDobelConditions(uint64_t a, uint64_t c);
-	bool isEven(uint64_t x);
-	bool isDivisibleByFour(uint64_t x);
+    bool checkHullDobelConditions(uint64_t a, uint64_t c);
+    bool isEven(uint64_t x);
+    bool isDivisibleByFour(uint64_t x);
 public:
-	bool checkInternalParameters();
-	void setSeed(uint64_t seed);
-	bool changeLCG(uint64_t a, uint64_t c);
+    bool checkInternalParameters();
+    void setSeed(uint64_t seed);
+    bool changeLCG(uint64_t a, uint64_t c);
     uint64_t nextRandom();
 };
 

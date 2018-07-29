@@ -47,22 +47,22 @@ Provided that the offset c is nonzero, the LCG will have a full period for all s
 */
 bool Random64::checkHullDobelConditions(uint64_t a, uint64_t c)
 {
-	// 2 is the unique prime factor of m= 2^64
-	// c must be an odd number so it is not divisible by 2, so the greater common divisor of c and m is 1
-	bool result = !isEven(c);
+    // 2 is the unique prime factor of m= 2^64
+    // c must be an odd number so it is not divisible by 2, so the greater common divisor of c and m is 1
+    bool result = !isEven(c);
 
-	//a-1 is divisible by 2 and 4 according to conditions 2 and 3
-	return result && isEven(a - 1) && isDivisibleByFour(a - 1);
+    //a-1 is divisible by 2 and 4 according to conditions 2 and 3
+    return result && isEven(a - 1) && isDivisibleByFour(a - 1);
 }
 
 bool Random64::isEven(uint64_t x)
 {
-	return x % 2 == 0;
+    return x % 2 == 0;
 }
 
 bool Random64::isDivisibleByFour(uint64_t x)
 {
-	return x % 4 == 0;
+    return x % 4 == 0;
 }
 
 /**
@@ -70,7 +70,7 @@ bool Random64::isDivisibleByFour(uint64_t x)
 */
 bool Random64::checkInternalParameters()
 {
-	return checkHullDobelConditions(this->a, this->c);
+    return checkHullDobelConditions(this->a, this->c);
 }
 
 void Random64::setSeed(uint64_t seed)
@@ -80,18 +80,18 @@ void Random64::setSeed(uint64_t seed)
 
 bool Random64::changeLCG(uint64_t a, uint64_t c)
 {
-	if (checkHullDobelConditions(a, c))
-	{
-		std::cout << "New parameters for the LCG are right\n" << std::endl;
-		this->a = a;
-		this->c = c;
-		return true;
-	}
-	else
-	{
-		std::cout << "New parameters for the LCG are wrong: preserving the old values\n" << std::endl;
-		return false;
-	}
+    if (checkHullDobelConditions(a, c))
+    {
+        std::cout << "New parameters for the LCG are right\n" << std::endl;
+        this->a = a;
+        this->c = c;
+        return true;
+    }
+    else
+    {
+        std::cout << "New parameters for the LCG are wrong: preserving the old values\n" << std::endl;
+        return false;
+    }
 }
 
 uint64_t Random64::nextRandom()
